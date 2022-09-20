@@ -1,0 +1,57 @@
+
+class IsValidNumberPlate {
+    static boolean isValid(String s) {
+        if (s.length() != 10) return false;
+
+        for (int i = 0; i < s.length(); i++) {
+            if (i < 2) {
+                boolean aChar = isChar(s.charAt(i));
+                System.out.println("char at " + i + " = " + s.charAt(i) + "  result  = " + aChar);
+                if (!aChar) {
+                    return false;
+                }
+            } else if (i < 4) {
+                boolean aNum = isNum(s.charAt(i));
+                System.out.println("char at " + i + " = " + s.charAt(i) + "  result  = " + aNum);
+                if (!aNum)
+                    return false;
+            } else if (i < 6) {
+                boolean aChar = isChar(s.charAt(i));
+                System.out.println("char at " + i + " = " + s.charAt(i) + "  result  = " + aChar);
+                if (!aChar)
+                    return false;
+            } else {
+                boolean aNum = isNum(s.charAt(i));
+                System.out.println("char at " + i + " = " + s.charAt(i) + "  result  = " + aNum);
+                if (!aNum)
+                    return false;
+            }
+        }
+        return true;
+    }
+
+    static boolean isChar(char c) {
+        if ((c >= 65 && c <= 91) || (c >= 97 && c <= 123))
+            return true;
+        return false;
+    }
+
+    static boolean isNum(int n) {
+        if (n >= 48 && n <= 57)
+            return true;
+        return false;
+    }
+
+    public static void main(String[] args) {
+
+
+            System.out.println("Test Case => "+1+ "  UP  result = "+isValid("UP"));
+            System.out.println("Test Case => "+2+ "  UP1kCS4567  result = "+isValid("UP1kCS4567"));
+            System.out.println("Test Case => "+2+ "  UP10114567  result = "+isValid("UP10114567"));
+            System.out.println("Test Case => "+2+ "  UP10cs4567  result = "+isValid("UP10cs4567"));
+            System.out.println("Test Case => "+2+ "  UP10cs75j7  result = "+isValid("UP10cs75j7"));
+
+
+
+    }
+}
